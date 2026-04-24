@@ -1,0 +1,2769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dr. Milky Derara Dental Specialty Clinic</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50:  '#eff6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              300: '#93c5fd',
+              400: '#60a5fa',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            }
+          },
+          fontFamily: {
+            display: ['"Playfair Display"', 'Georgia', 'serif'],
+            body:    ['"DM Sans"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* =============================================
+       DESIGN TOKENS — LIGHT (default)
+    ============================================= */
+    :root {
+      --blue-primary:   #1d4ed8;
+      --blue-mid:       #2563eb;
+      --blue-light:     #3b82f6;
+      --blue-soft:      #eff6ff;
+      --blue-glow:      rgba(37,99,235,0.25);
+      --white:          #ffffff;
+      --gray-50:        #f9fafb;
+      --gray-100:       #f3f4f6;
+      --gray-200:       #e5e7eb;
+      --gray-400:       #9ca3af;
+      --gray-600:       #4b5563;
+      --gray-800:       #1f2937;
+      --shadow-card:    0 8px 40px rgba(29,78,216,.10);
+      --shadow-hover:   0 20px 60px rgba(29,78,216,.18);
+      --radius-card:    20px;
+      --ease-spring:    cubic-bezier(0.16,1,0.3,1);
+      --ease-out:       cubic-bezier(0.22,1,0.36,1);
+
+      /* Surface tokens used by dark mode */
+      --bg-page:        #ffffff;
+      --bg-card:        #ffffff;
+      --bg-section-alt: #f9fafb;
+      --bg-section-tint:#f0f6ff;
+      --text-primary:   #1f2937;
+      --text-secondary: #4b5563;
+      --text-tertiary:  #9ca3af;
+      --border-subtle:  rgba(37,99,235,.07);
+      --border-default: #e5e7eb;
+      --input-bg:       #f9fafb;
+      --input-border:   #e5e7eb;
+      --card-shadow:    0 8px 40px rgba(29,78,216,.10);
+      --nav-bg:         rgba(255,255,255,0.92);
+    }
+
+    /* =============================================
+       DARK MODE OVERRIDES
+    ============================================= */
+    html.dark {
+      --bg-page:        #0d1117;
+      --bg-card:        #161b22;
+      --bg-section-alt: #0d1117;
+      --bg-section-tint:#111827;
+      --text-primary:   #f0f6ff;
+      --text-secondary: #94a3b8;
+      --text-tertiary:  #475569;
+      --border-subtle:  rgba(99,152,255,.10);
+      --border-default: rgba(99,152,255,.14);
+      --input-bg:       #1c2333;
+      --input-border:   rgba(99,152,255,.18);
+      --card-shadow:    0 8px 40px rgba(0,0,0,.40);
+      --nav-bg:         rgba(13,17,23,0.92);
+      --gray-800:       #f0f6ff;
+      --gray-600:       #94a3b8;
+      --gray-400:       #475569;
+      --gray-200:       rgba(99,152,255,.14);
+      --white:          #161b22;
+    }
+
+    /* Dark: body + page background */
+    html.dark body { background: var(--bg-page); color: var(--text-primary); }
+
+    /* Dark: navbar */
+    html.dark #navbar { background: var(--nav-bg); border-bottom-color: var(--border-subtle); }
+    html.dark .nav-link { color: var(--text-secondary); }
+    html.dark .nav-link:hover { color: #93c5fd; }
+
+    /* Dark: topbar stays dark (already is) */
+
+    /* Dark: hero section */
+    html.dark #hero {
+      background: linear-gradient(145deg, #0d1117 0%, #111827 60%, #0f172a 100%);
+    }
+    html.dark #hero::before {
+      background-image: radial-gradient(circle, rgba(99,152,255,.08) 1px, transparent 1px);
+    }
+    html.dark .hero-img-placeholder {
+      background: linear-gradient(180deg, #1e2d4a 0%, #1a2744 100%);
+      box-shadow: 0 30px 80px rgba(0,0,0,.5);
+    }
+    html.dark .hero-img-circle {
+      background: linear-gradient(145deg, rgba(37,99,235,.30), rgba(96,165,250,.20));
+    }
+    html.dark .hero-float-badge {
+      background: #1c2333;
+      box-shadow: 0 8px 30px rgba(0,0,0,.4);
+    }
+
+    /* Dark: section labels */
+    html.dark .section-label { background: rgba(99,152,255,.12); color: #93c5fd; }
+    html.dark .section-title { color: var(--text-primary); }
+    html.dark .section-title .accent { color: #60a5fa; }
+    html.dark .section-sub { color: var(--text-secondary); }
+
+    /* Dark: about section */
+    html.dark #about { background: var(--bg-page); }
+    html.dark .about-img {
+      background: linear-gradient(160deg, #1e2d4a, #1a2744);
+      box-shadow: 0 24px 80px rgba(0,0,0,.4);
+    }
+    html.dark .about-badge {
+      background: #1c2333;
+      box-shadow: 0 8px 32px rgba(0,0,0,.4);
+    }
+
+    /* Dark: stats bar — keep gradient but deeper */
+    html.dark .stats-bar {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 60%, #1d4ed8 100%);
+    }
+
+    /* Dark: services section */
+    html.dark #services { background: linear-gradient(180deg, #0d1117, #111827) !important; }
+    html.dark .service-card {
+      background: var(--bg-card);
+      border-color: var(--border-subtle);
+      box-shadow: var(--card-shadow);
+    }
+    html.dark .service-card:hover { border-color: rgba(99,152,255,.28); }
+    html.dark .service-img { background: linear-gradient(135deg, #1e2d4a, #1a2744); }
+    html.dark .service-card h3 { color: #e0eaff !important; }
+    html.dark .service-card p  { color: var(--text-secondary) !important; }
+
+    /* Dark: doctors section */
+    html.dark #doctors { background: var(--bg-page); }
+    html.dark .doctor-card {
+      background: var(--bg-card);
+      border-color: var(--border-subtle);
+      box-shadow: var(--card-shadow);
+    }
+    html.dark .doctor-img { background: linear-gradient(160deg, #1e2d4a, #1a2744); }
+    html.dark .doctor-card h3 { color: #e0eaff !important; }
+    html.dark .doctor-card p  { color: #60a5fa !important; }
+
+    /* Dark: testimonials */
+    html.dark #testimonials { background: linear-gradient(180deg, #0d1117, #111827) !important; }
+    html.dark .tcard {
+      background: var(--bg-card);
+      border-color: var(--border-subtle);
+      box-shadow: var(--card-shadow);
+    }
+    html.dark .tcard:hover { border-color: rgba(99,152,255,.28); }
+    html.dark .tcard-quote { color: var(--text-secondary); }
+    html.dark .tcard-footer { border-top-color: rgba(255,255,255,.06); }
+    html.dark .tcard-avatar-fallback { background: linear-gradient(135deg,#1e2d4a,#1a2744) !important; }
+
+    /* Dark: contact section */
+    html.dark #contact { background: var(--bg-page); }
+    html.dark .contact-info-card {
+      background: var(--bg-card);
+      border-color: var(--border-subtle);
+      box-shadow: var(--card-shadow);
+    }
+    html.dark .contact-info-card > div > div:first-child { color: #e0eaff !important; }
+    html.dark .contact-info-card > div > div:last-child  { color: var(--text-secondary) !important; }
+    html.dark .contact-info-icon { background: rgba(99,152,255,.12); color: #93c5fd; }
+    html.dark .contact-input {
+      background: var(--input-bg);
+      border-color: var(--input-border);
+      color: var(--text-primary);
+    }
+    html.dark .contact-input::placeholder { color: var(--text-tertiary); }
+    html.dark .contact-input:focus {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59,130,246,.15);
+      background: #1c2333;
+    }
+    html.dark #contact > div > div > div:last-child > div {
+      background: linear-gradient(145deg,#111827,#0d1117) !important;
+      border-color: var(--border-subtle) !important;
+    }
+    html.dark #contact h3 { color: #e0eaff !important; }
+    html.dark #contact label { color: #94a3b8 !important; }
+
+    /* Dark: map section */
+    html.dark #map-section { background: #0d1117 !important; }
+    html.dark #map-section h2 { color: #e0eaff !important; }
+    html.dark #map-section p  { color: var(--text-secondary) !important; }
+    html.dark #map-section > div > div:last-child {
+      border-color: rgba(99,152,255,.12) !important;
+    }
+    html.dark .map-badge-overlay {
+      background: #1c2333 !important;
+      box-shadow: 0 6px 24px rgba(0,0,0,.4) !important;
+    }
+    html.dark .map-badge-overlay > div:last-child > div:first-child { color: #e0eaff !important; }
+    html.dark .map-badge-overlay > div:last-child > div:last-child  { color: var(--text-secondary) !important; }
+
+    /* Dark: mobile drawer */
+    html.dark #mobile-menu { background: #161b22; }
+    html.dark .mob-drawer-header { background: linear-gradient(135deg,#1a2744,#161b22); border-bottom-color: rgba(255,255,255,.06); }
+    html.dark .mob-close-btn { background: rgba(255,255,255,.06); color: #94a3b8; }
+    html.dark .mob-close-btn:hover { background: rgba(220,38,38,.15); color: #f87171; }
+    html.dark .mob-nav-link { color: #94a3b8; }
+    html.dark .mob-nav-link:hover { background: rgba(99,152,255,.10); color: #93c5fd; }
+    html.dark .mob-nav-link-icon { background: rgba(255,255,255,.06); color: #94a3b8; }
+    html.dark .mob-nav-link:hover .mob-nav-link-icon { background: rgba(99,152,255,.14); color: #93c5fd; }
+    html.dark .mob-nav-divider { background: rgba(255,255,255,.06); }
+    html.dark .mob-cta-area { background: #0d1117; border-top-color: rgba(255,255,255,.06); }
+    html.dark .mob-info-row { color: #64748b; }
+    html.dark .mob-info-row svg { color: #60a5fa; }
+
+    /* Dark: preloader */
+    html.dark #preloader { background: #0d1117; }
+    html.dark .preloader-brand { color: #93c5fd; }
+    html.dark .preloader-brand span { color: #475569; }
+    html.dark .preloader-bar-wrap { background: #1e2d4a; }
+    html.dark .preloader-percent { color: #93c5fd; }
+    html.dark .preloader-text { color: #64748b; }
+
+    /* Dark: ticker */
+    html.dark .ticker-wrap { background: #0f172a; }
+
+    /* Dark: section labels inline (hardcoded colors override) */
+    html.dark [style*="color:#1e3a8a"]:not(footer *):not(#topbar *) { color: #e0eaff !important; }
+    html.dark [style*="color:#1f2937"]:not(footer *) { color: #f0f6ff !important; }
+    html.dark [style*="color:#374151"]:not(footer *):not(#mobile-menu *) { color: #cbd5e1 !important; }
+    html.dark [style*="color:#6b7280"]:not(footer *) { color: #64748b !important; }
+    html.dark [style*="background:white"]:not(footer *):not(.btn-primary):not(.btn-call-now) { background: #1c2333 !important; }
+    html.dark [style*="background:#f9fafb"]:not(footer *) { background: var(--input-bg) !important; }
+    html.dark [style*="background:linear-gradient(145deg,#eff6ff"]:not(footer *) {
+      background: linear-gradient(145deg,#111827,#0d1117) !important;
+    }
+
+    /* =============================================
+       DARK MODE TOGGLE BUTTON
+    ============================================= */
+    #dark-toggle {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: #f1f5f9;
+      border: none;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s var(--ease-spring), transform 0.2s var(--ease-spring),
+                  box-shadow 0.3s var(--ease-spring);
+      outline: none;
+    }
+    #dark-toggle:hover {
+      background: #dbeafe;
+      transform: scale(1.08);
+      box-shadow: 0 4px 14px rgba(37,99,235,.18);
+    }
+    #dark-toggle:active { transform: scale(0.94); }
+    #dark-toggle:focus-visible { box-shadow: 0 0 0 3px rgba(37,99,235,.35); }
+
+    /* In dark mode, button gets a subtle glow */
+    html.dark #dark-toggle {
+      background: rgba(99,152,255,.14);
+    }
+    html.dark #dark-toggle:hover {
+      background: rgba(99,152,255,.24);
+      box-shadow: 0 4px 14px rgba(99,152,255,.25);
+    }
+
+    /* Sun icon — shown in light mode */
+    #dt-sun {
+      position: absolute;
+      display: flex; align-items: center; justify-content: center;
+      color: #f59e0b;
+      transform: rotate(0deg) scale(1);
+      transition: transform 0.45s cubic-bezier(0.16,1,0.3,1),
+                  opacity   0.3s ease;
+      opacity: 1;
+    }
+    /* Moon icon — shown in dark mode */
+    #dt-moon {
+      position: absolute;
+      display: flex; align-items: center; justify-content: center;
+      color: #93c5fd;
+      transform: rotate(90deg) scale(0.6);
+      transition: transform 0.45s cubic-bezier(0.16,1,0.3,1),
+                  opacity   0.3s ease;
+      opacity: 0;
+    }
+    /* Dark mode: swap — sun hides, moon appears */
+    html.dark #dt-sun  { transform: rotate(-90deg) scale(0.6); opacity: 0; }
+    html.dark #dt-moon { transform: rotate(0deg)   scale(1);   opacity: 1; }
+
+    /* Mobile drawer icon button — same style */
+    #dark-toggle-mobile {
+      width: 38px; height: 38px;
+      border-radius: 10px;
+      background: #f1f5f9;
+      border: none;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s var(--ease-spring);
+      outline: none;
+    }
+    html.dark #dark-toggle-mobile { background: rgba(99,152,255,.14); }
+    #dtm-sun, #dtm-moon {
+      position: absolute;
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 0.45s cubic-bezier(0.16,1,0.3,1),
+                  opacity   0.3s ease;
+    }
+    #dtm-sun  { color:#f59e0b; transform:rotate(0)   scale(1);   opacity:1; }
+    #dtm-moon { color:#93c5fd; transform:rotate(90deg) scale(0.6); opacity:0; }
+    html.dark #dtm-sun  { transform:rotate(-90deg) scale(0.6); opacity:0; }
+    html.dark #dtm-moon { transform:rotate(0)      scale(1);   opacity:1; }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--gray-800);
+      overflow-x: hidden;
+    }
+
+    /* =============================================
+       PRELOADER
+    ============================================= */
+    #preloader {
+      position: fixed;
+      inset: 0;
+      background: #fff;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      transition: opacity 0.6s var(--ease-out), visibility 0.6s;
+    }
+    #preloader.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+    .preloader-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      animation: preloader-pulse 1.4s ease-in-out infinite;
+    }
+    .preloader-tooth {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, var(--blue-mid), var(--blue-light));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 32px rgba(37,99,235,0.35);
+    }
+    .preloader-tooth svg { color: white; }
+    .preloader-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--blue-primary);
+      line-height: 1.1;
+    }
+    .preloader-brand span {
+      display: block;
+      font-size: 13px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gray-400);
+    }
+    .preloader-bar-wrap {
+      width: 300px;
+      height: 10px;
+      background: #dbeafe;
+      border-radius: 99px;
+      overflow: hidden;
+      border: 1px solid rgba(37,99,235,.15);
+    }
+    .preloader-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--blue-primary), var(--blue-mid), var(--blue-light));
+      border-radius: 99px;
+      box-shadow: 0 0 14px rgba(37,99,235,0.55), 0 0 4px rgba(96,165,250,0.4);
+      /* transition set dynamically in JS for smoothest result */
+    }
+    .preloader-percent {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--blue-primary);
+      letter-spacing: .04em;
+    }
+    .preloader-text {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--gray-600);
+      letter-spacing: .06em;
+    }
+    @keyframes preloader-pulse {
+      0%,100% { transform: scale(1); }
+      50%      { transform: scale(1.04); }
+    }
+
+    /* =============================================
+       TOP BAR
+    ============================================= */
+    #topbar {
+      background: linear-gradient(90deg, var(--blue-primary) 0%, var(--blue-mid) 100%);
+      color: #e0e7ff;
+      font-size: 12.5px;
+      font-weight: 500;
+      letter-spacing: .02em;
+      padding: 8px 0;
+    }
+    #topbar a:hover { color: white; text-decoration: underline; }
+
+    /* =============================================
+       NAVBAR
+    ============================================= */
+    #navbar {
+      position: sticky;
+      top: 0;
+      z-index: 500;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(18px) saturate(180%);
+      -webkit-backdrop-filter: blur(18px) saturate(180%);
+      border-bottom: 1px solid rgba(37,99,235,.07);
+      padding: 14px 0;
+      transition: box-shadow 0.3s var(--ease-spring), padding 0.3s var(--ease-spring);
+    }
+    #navbar.scrolled {
+      box-shadow: 0 4px 32px rgba(29,78,216,.10);
+      padding: 10px 0;
+    }
+    .nav-link {
+      position: relative;
+      font-size: 14.5px;
+      font-weight: 500;
+      color: var(--gray-600);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-link::after {
+      content:'';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 2px;
+      background: linear-gradient(90deg, var(--blue-mid), var(--blue-light));
+      border-radius: 2px;
+      transition: width 0.3s var(--ease-spring);
+    }
+    .nav-link:hover { color: var(--blue-mid); }
+    .nav-link:hover::after { width: 100%; }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 22px;
+      background: linear-gradient(135deg, var(--blue-mid) 0%, var(--blue-light) 100%);
+      color: white;
+      font-weight: 600;
+      font-size: 14px;
+      border-radius: 50px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s var(--ease-spring);
+      box-shadow: 0 4px 16px var(--blue-glow);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(37,99,235,.32);
+    }
+    .btn-primary:active { transform: translateY(0); }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 22px;
+      background: transparent;
+      color: var(--blue-mid);
+      font-weight: 600;
+      font-size: 14px;
+      border-radius: 50px;
+      text-decoration: none;
+      border: 2px solid var(--blue-mid);
+      cursor: pointer;
+      transition: all 0.25s var(--ease-spring);
+    }
+    .btn-call-now {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 10px 20px;
+      background: linear-gradient(135deg, #16a34a 0%, #22c55e 100%);
+      color: white;
+      font-weight: 700;
+      font-size: 14px;
+      border-radius: 50px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s var(--ease-spring);
+      box-shadow: 0 4px 16px rgba(22,163,74,0.35);
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-call-now:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(22,163,74,0.45);
+    }
+    .btn-call-now:active { transform: translateY(0); }
+    .btn-call-now .call-ping {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: white;
+      position: relative;
+    }
+    .btn-call-now .call-ping::after {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.5);
+      animation: call-ping 1.4s ease-out infinite;
+    }
+    @keyframes call-ping {
+      0%   { transform: scale(1); opacity: 0.8; }
+      100% { transform: scale(2.5); opacity: 0; }
+    }
+
+    /* =============================================
+       MARQUEE (TICKER)
+    ============================================= */
+    .ticker-wrap {
+      background: var(--blue-primary);
+      padding: 13px 0;
+      overflow: hidden;
+    }
+    .ticker-inner {
+      display: flex;
+      white-space: nowrap;
+      animation: ticker-scroll 28s linear infinite;
+    }
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: rgba(255,255,255,.88);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: .04em;
+      padding-right: 60px;
+      text-transform: uppercase;
+    }
+    .ticker-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.45);
+      flex-shrink: 0;
+    }
+    @keyframes ticker-scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* =============================================
+       HERO
+    ============================================= */
+    #hero {
+      position: relative;
+      min-height: 92vh;
+      overflow: hidden;
+      background: linear-gradient(145deg, #f0f6ff 0%, #ffffff 60%, #eff6ff 100%);
+      display: flex;
+      align-items: center;
+      padding: 80px 0 120px;
+    }
+
+    /* Decorative blob */
+    .hero-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-blob-1 {
+      width: 520px; height: 520px;
+      top: -100px; right: -60px;
+      background: radial-gradient(circle, rgba(37,99,235,.18) 0%, transparent 70%);
+      animation: blob-drift-1 18s ease-in-out infinite alternate;
+    }
+    .hero-blob-2 {
+      width: 400px; height: 400px;
+      bottom: -80px; left: -80px;
+      background: radial-gradient(circle, rgba(96,165,250,.14) 0%, transparent 70%);
+      animation: blob-drift-2 22s ease-in-out infinite alternate;
+    }
+    .hero-blob-3 {
+      width: 300px; height: 300px;
+      top: 40%; right: 38%;
+      background: radial-gradient(circle, rgba(191,219,254,.30) 0%, transparent 70%);
+      animation: blob-drift-3 15s ease-in-out infinite alternate;
+    }
+    @keyframes blob-drift-1 { from{transform:translate(0,0) scale(1)} to{transform:translate(-40px,50px) scale(1.15)} }
+    @keyframes blob-drift-2 { from{transform:translate(0,0) scale(1.1)} to{transform:translate(50px,-40px) scale(0.9)} }
+    @keyframes blob-drift-3 { from{transform:translate(0,0)} to{transform:translate(-30px,30px)} }
+
+    /* Grid dots bg */
+    #hero::before {
+      content:'';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(37,99,235,.07) 1px, transparent 1px);
+      background-size: 28px 28px;
+      z-index: 0;
+    }
+
+    .hero-img-wrap {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero-img-circle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      /* Scales with the placeholder */
+      width: min(460px, 90vw);
+      height: min(460px, 90vw);
+      border-radius: 50%;
+      background: linear-gradient(145deg, rgba(37,99,235,.20), rgba(96,165,250,.25));
+      z-index: 0;
+      animation: float-circle 6s ease-in-out infinite;
+    }
+    @keyframes float-circle {
+      0%,100%{transform:translate(-50%,-50%) scale(1)}
+      50%{transform:translate(-50%,-54%) scale(1.03)}
+    }
+    .hero-img-placeholder {
+      position: relative;
+      z-index: 1;
+      /* Fluid: fills container on mobile, capped at 400px on desktop */
+      width: clamp(240px, 80vw, 400px);
+      height: clamp(300px, 96vw, 480px);
+      background: linear-gradient(180deg, #dbeafe 0%, #bfdbfe 100%);
+      border-radius: 30% 60% 60% 30% / 50% 50% 50% 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--blue-mid);
+      font-size: 13px;
+      font-weight: 500;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(37,99,235,.20);
+      animation: float-img 6s ease-in-out infinite;
+    }
+    @keyframes float-img {
+      0%,100%{transform:translateY(0)} 50%{transform:translateY(-14px)}
+    }
+
+    /* Floating badge on hero */
+    .hero-float-badge {
+      position: absolute;
+      z-index: 3;
+      background: white;
+      border-radius: 16px;
+      padding: 12px 18px;
+      box-shadow: 0 8px 30px rgba(29,78,216,.14);
+      display: flex; align-items: center; gap: 10px;
+      animation: float-badge 5s ease-in-out infinite;
+    }
+    @keyframes float-badge {
+      0%,100%{transform:translateY(0) rotate(-2deg)} 50%{transform:translateY(-10px) rotate(2deg)}
+    }
+    .hero-float-badge-1 { top: 16px; left: 0px; }
+    .hero-float-badge-2 { bottom: 20px; right: 0px; animation-delay: -2.5s; }
+
+    /* Appointment card */
+    .appt-card {
+      background: white;
+      border-radius: var(--radius-card);
+      box-shadow: 0 16px 60px rgba(29,78,216,.12);
+      padding: 28px 32px;
+      border: 1px solid rgba(37,99,235,.08);
+    }
+    .appt-input {
+      border: 1.5px solid var(--gray-200);
+      border-radius: 12px;
+      padding: 12px 16px 12px 42px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      color: var(--gray-800);
+      background: var(--gray-50);
+      width: 100%;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .appt-input:focus {
+      border-color: var(--blue-mid);
+      box-shadow: 0 0 0 3px rgba(37,99,235,.10);
+      background: white;
+    }
+    .appt-input::placeholder { color: var(--gray-400); }
+    .appt-field { position: relative; }
+    .appt-icon {
+      position: absolute;
+      left: 14px; top: 50%;
+      transform: translateY(-50%);
+      color: var(--blue-light);
+      pointer-events: none;
+    }
+
+    /* =============================================
+       SECTION STYLES
+    ============================================= */
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--blue-mid);
+      background: rgba(37,99,235,.07);
+      padding: 6px 14px;
+      border-radius: 50px;
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 4vw, 50px);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--gray-800);
+      letter-spacing: -.01em;
+    }
+    .section-title .accent { color: var(--blue-mid); }
+    .section-sub {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--gray-600);
+      max-width: 560px;
+    }
+
+    /* =============================================
+       SERVICE CARDS
+    ============================================= */
+    .service-card {
+      background: white;
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-card);
+      border: 1px solid rgba(37,99,235,.06);
+      overflow: hidden;
+      transition: all 0.35s var(--ease-spring);
+    }
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover);
+      border-color: rgba(37,99,235,.18);
+    }
+    .service-img {
+      height: 200px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .service-img img {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.5s var(--ease-spring);
+      z-index: 0;
+    }
+    .service-card:hover .service-img img { transform: scale(1.03); }
+    .service-icon-badge {
+      position: absolute;
+      bottom: -20px; left: 24px;
+      width: 44px; height: 44px;
+      background: linear-gradient(135deg, var(--blue-mid), var(--blue-light));
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 20px var(--blue-glow);
+      color: white;
+      z-index: 2;
+    }
+    .service-glow-border {
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius-card);
+      opacity: 0;
+      transition: opacity 0.3s;
+      box-shadow: inset 0 0 0 2px rgba(37,99,235,.4), 0 0 30px rgba(37,99,235,.15);
+      pointer-events: none;
+    }
+    .service-card:hover .service-glow-border { opacity: 1; }
+
+    /* =============================================
+       DOCTOR CARDS
+    ============================================= */
+    .doctor-card {
+      background: white;
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+      border: 1px solid rgba(37,99,235,.06);
+      transition: all 0.35s var(--ease-spring);
+      text-align: center;
+    }
+    .doctor-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-hover);
+    }
+    .doctor-img {
+      height: 240px;
+      background: linear-gradient(160deg, #dbeafe 0%, #bfdbfe 100%);
+      overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .doctor-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      transition: transform 0.5s var(--ease-spring);
+    }
+    .doctor-card:hover .doctor-img img { transform: scale(1.03); }
+    .doctor-social-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(29,78,216,.85) 0%, transparent 60%);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 12px;
+      padding-bottom: 20px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .doctor-card:hover .doctor-social-overlay { opacity: 1; }
+    .doctor-social-btn {
+      width: 36px; height: 36px;
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: white;
+      transition: background 0.2s;
+    }
+    .doctor-social-btn:hover { background: rgba(255,255,255,.35); }
+
+    /* =============================================
+       REAL IMAGE INTEGRATION
+    ============================================= */
+    .hero-img-real {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.05);
+      filter: contrast(1.05) brightness(1.02);
+      display: block;
+    }
+    .hero-img-placeholder::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(180deg, transparent 60%, rgba(37,99,235,.10) 100%);
+      pointer-events: none;
+      z-index: 2;
+    }
+    .about-img-real {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.1) rotate(-2deg);
+      transition: transform 0.6s var(--ease-spring);
+      display: block;
+    }
+    .about-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(160deg, transparent 50%, rgba(37,99,235,.12) 100%);
+      pointer-events: none;
+      z-index: 2;
+    }
+    .service-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(29,78,216,.35) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.4s var(--ease-out);
+      pointer-events: none;
+      z-index: 1;
+    }
+    .service-card:hover .service-img::after { opacity: 1; }
+
+    /* =============================================
+       TESTIMONIALS
+    ============================================= */
+    .testimonial-carousel {
+      overflow: hidden;
+      position: relative;
+    }
+    .testimonial-track {
+      display: flex;
+      gap: 24px;
+      transition: transform 0.6s var(--ease-spring);
+      will-change: transform;
+    }
+    .testimonial-card {
+      min-width: calc(33.333% - 16px);
+      background: white;
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-card);
+      border: 1px solid rgba(37,99,235,.06);
+      padding: 28px;
+      flex-shrink: 0;
+    }
+    @media(max-width:1024px){ .testimonial-card { min-width: calc(50% - 12px); } }
+    @media(max-width:640px) { .testimonial-card { min-width: 88%; } }
+
+    /* =============================================
+       STATS BAR
+    ============================================= */
+    .stats-bar {
+      background: linear-gradient(135deg, var(--blue-primary) 0%, var(--blue-mid) 60%, var(--blue-light) 100%);
+    }
+
+    /* =============================================
+       CONTACT FORM
+    ============================================= */
+    .contact-input {
+      border: 1.5px solid var(--gray-200);
+      border-radius: 12px;
+      padding: 13px 16px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      color: var(--gray-800);
+      background: white;
+      width: 100%;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .contact-input:focus {
+      border-color: var(--blue-mid);
+      box-shadow: 0 0 0 3px rgba(37,99,235,.10);
+    }
+    .contact-input::placeholder { color: var(--gray-400); }
+
+    /* =============================================
+       ANIMATIONS (SCROLL)
+    ============================================= */
+    .anim-fade-up {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+    }
+    .anim-fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .anim-fade-in {
+      opacity: 0;
+      transition: opacity 0.7s var(--ease-out);
+    }
+    .anim-fade-in.visible { opacity: 1; }
+
+    /* stagger delays */
+    .delay-1 { transition-delay: 0.08s; }
+    .delay-2 { transition-delay: 0.16s; }
+    .delay-3 { transition-delay: 0.24s; }
+    .delay-4 { transition-delay: 0.32s; }
+    .delay-5 { transition-delay: 0.40s; }
+    .delay-6 { transition-delay: 0.48s; }
+
+    /* =============================================
+       MISC
+    ============================================= */
+    .divider-wave {
+      width: 100%; overflow: hidden;
+      line-height: 0;
+    }
+
+    .footer-link:hover { color: white; text-decoration: underline; }
+
+    /* =============================================
+       MOBILE NAV DRAWER
+    ============================================= */
+    /* Backdrop overlay */
+    #nav-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.55);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      z-index: 600;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.38s cubic-bezier(0.4,0,0.2,1);
+    }
+    #nav-backdrop.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    /* Slide-in drawer */
+    #mobile-menu {
+      position: fixed;
+      top: 0; right: 0;
+      width: min(320px, 88vw);
+      height: 100vh;
+      height: 100dvh;
+      background: white;
+      z-index: 700;
+      transform: translateX(100%);
+      transition: transform 0.42s cubic-bezier(0.16,1,0.3,1),
+                  box-shadow 0.42s cubic-bezier(0.16,1,0.3,1);
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      box-shadow: none;
+      will-change: transform;
+    }
+    #mobile-menu.open {
+      transform: translateX(0);
+      box-shadow: -12px 0 60px rgba(29,78,216,.18);
+    }
+
+    /* Hamburger button — animates to X when menu is open */
+    #hamburger {
+      position: relative;
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: #f1f5f9;
+      border: none;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      color: #374151;
+      transition: background 0.2s, color 0.2s, transform 0.2s;
+      flex-shrink: 0;
+    }
+    #hamburger:hover { background: #dbeafe; color: #2563eb; }
+    #hamburger.is-open { background: #eff6ff; color: #2563eb; transform: rotate(90deg); }
+
+    /* Hamburger lines → X morphing */
+    #ham-line-1, #ham-line-2, #ham-line-3 {
+      position: absolute;
+      width: 18px; height: 2px;
+      background: currentColor;
+      border-radius: 2px;
+      transition: transform 0.35s cubic-bezier(0.16,1,0.3,1),
+                  opacity 0.25s ease,
+                  top 0.35s cubic-bezier(0.16,1,0.3,1);
+      left: 50%; transform-origin: center;
+    }
+    #ham-line-1 { top: 12px; transform: translateX(-50%); }
+    #ham-line-2 { top: 19px; transform: translateX(-50%); }
+    #ham-line-3 { top: 26px; transform: translateX(-50%); }
+
+    /* X state */
+    #hamburger.is-open #ham-line-1 { top: 19px; transform: translateX(-50%) rotate(45deg); }
+    #hamburger.is-open #ham-line-2 { opacity: 0; transform: translateX(-50%) scaleX(0); }
+    #hamburger.is-open #ham-line-3 { top: 19px; transform: translateX(-50%) rotate(-45deg); }
+
+    .mob-drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      border-bottom: 1px solid #f1f5f9;
+      background: linear-gradient(135deg,#eff6ff,#ffffff);
+      flex-shrink: 0;
+    }
+    .mob-close-btn {
+      width: 38px; height: 38px;
+      border-radius: 10px;
+      background: #f1f5f9;
+      border: none;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      color: #374151;
+      transition: background 0.2s, color 0.2s, transform 0.2s;
+      flex-shrink: 0;
+    }
+    .mob-close-btn:hover { background: #fee2e2; color: #dc2626; transform: rotate(90deg); }
+
+    .mob-nav-links {
+      display: flex;
+      flex-direction: column;
+      padding: 20px 24px;
+      gap: 4px;
+      flex: 1;
+    }
+    .mob-nav-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 16px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #374151;
+      text-decoration: none;
+      transition: all 0.22s cubic-bezier(0.16,1,0.3,1);
+    }
+    .mob-nav-link:hover, .mob-nav-link:active {
+      background: #eff6ff;
+      color: #2563eb;
+      padding-left: 20px;
+    }
+    .mob-nav-link-icon {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      background: #f1f5f9;
+      display: flex; align-items: center; justify-content: center;
+      color: #6b7280;
+      flex-shrink: 0;
+      transition: all 0.22s;
+    }
+    .mob-nav-link:hover .mob-nav-link-icon {
+      background: #dbeafe;
+      color: #2563eb;
+    }
+    .mob-nav-divider {
+      height: 1px;
+      background: #f1f5f9;
+      margin: 8px 0;
+    }
+    .mob-cta-area {
+      padding: 20px 24px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      border-top: 1px solid #f1f5f9;
+      background: #fafbff;
+      flex-shrink: 0;
+    }
+    .mob-info-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: #6b7280;
+      padding: 8px 0;
+    }
+    .mob-info-row svg { color: #2563eb; flex-shrink: 0; }
+
+    /* Prevent content from being hidden under sticky navbar */
+    html { scroll-padding-top: 80px; }
+
+    /* =============================================
+       HIDE NAVBAR + TOPBAR WHEN MOBILE DRAWER OPEN
+       (mobile only — has no effect on desktop)
+    ============================================= */
+    @media (max-width: 1023px) {
+      /* Navbar: full transition including transform + opacity */
+      #navbar {
+        transition: box-shadow    0.3s  var(--ease-spring),
+                    padding       0.3s  var(--ease-spring),
+                    transform     0.36s cubic-bezier(0.4,0,0.2,1),
+                    opacity       0.28s ease,
+                    z-index       0s    linear;
+      }
+      /* Slide navbar up + fade out + drop below drawer */
+      #navbar.drawer-open {
+        transform: translateY(-100%);
+        opacity: 0;
+        pointer-events: none;
+        z-index: 1; /* sink below everything */
+      }
+      /* Topbar: transition + hide */
+      #topbar {
+        transition: transform 0.32s cubic-bezier(0.4,0,0.2,1),
+                    opacity   0.25s ease;
+      }
+      #topbar.drawer-open {
+        transform: translateY(-100%);
+        opacity: 0;
+        pointer-events: none;
+      }
+    }
+
+    /* About image shape */
+    .about-img-wrap {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+    .about-img {
+      /* Fluid like the hero — scales down on mobile, never distorts */
+      width: clamp(260px, 80vw, 420px);
+      height: clamp(300px, 96vw, 480px);
+      background: linear-gradient(160deg, #dbeafe, #bfdbfe);
+      border-radius: 40% 60% 60% 40% / 40% 40% 60% 60%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; color: var(--blue-mid);
+      box-shadow: 0 24px 80px rgba(37,99,235,.15);
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
+      flex-shrink: 0;
+    }
+    .about-deco-shape {
+      position: absolute;
+      border-radius: 50%;
+      z-index: 0;
+    }
+    .about-deco-1 {
+      width: 80px; height: 80px;
+      top: -20px; right: 20px;
+      background: linear-gradient(135deg, var(--blue-mid), var(--blue-light));
+      opacity: .25;
+      animation: float-badge 7s ease-in-out infinite;
+    }
+    .about-deco-2 {
+      width: 50px; height: 50px;
+      bottom: 40px; left: 0px;
+      background: linear-gradient(135deg, #60a5fa, #93c5fd);
+      opacity: .3;
+      animation: float-badge 9s ease-in-out infinite reverse;
+    }
+    .about-badge {
+      position: absolute;
+      bottom: 20px; right: 0px;
+      background: white;
+      border-radius: 16px;
+      padding: 12px 16px;
+      box-shadow: 0 8px 32px rgba(29,78,216,.14);
+      z-index: 2;
+    }
+
+    /* Contact info card */
+    .contact-info-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 20px;
+      border-radius: 16px;
+      background: white;
+      box-shadow: 0 4px 20px rgba(29,78,216,.07);
+      border: 1px solid rgba(37,99,235,.07);
+    }
+    .contact-info-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      background: rgba(37,99,235,.08);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--blue-mid);
+      flex-shrink: 0;
+    }
+
+    /* Ripple on btn */
+    .btn-primary { position: relative; overflow: hidden; }
+    .ripple-el {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,.3);
+      transform: scale(0);
+      animation: ripple 0.55s linear;
+      pointer-events: none;
+    }
+    @keyframes ripple { to{transform:scale(4);opacity:0} }
+
+    /* =============================================
+       WHATSAPP FLOATING BUTTON
+    ============================================= */
+    #whatsapp-btn {
+      position: fixed;
+      bottom: 32px;
+      left: 32px;
+      z-index: 400;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+      color: white;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      padding: 13px 22px;
+      border-radius: 50px;
+      box-shadow: 0 6px 28px rgba(22,163,74,0.45), 0 2px 8px rgba(0,0,0,0.12);
+      transition: all 0.28s cubic-bezier(0.16,1,0.3,1);
+      white-space: nowrap;
+      cursor: pointer;
+      border: none;
+      /* Entrance animation */
+      animation: wa-entrance 0.7s cubic-bezier(0.16,1,0.3,1) 1.2s both;
+    }
+    @keyframes wa-entrance {
+      from { opacity:0; transform:translateY(20px) scale(0.9); }
+      to   { opacity:1; transform:translateY(0)  scale(1); }
+    }
+    #whatsapp-btn:hover {
+      transform: translateY(-4px) scale(1.04);
+      box-shadow: 0 14px 40px rgba(22,163,74,0.55), 0 4px 12px rgba(0,0,0,0.15);
+    }
+    #whatsapp-btn:active {
+      transform: translateY(-1px) scale(0.99);
+    }
+    /* Pulsing ring */
+    #whatsapp-btn::before {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50px;
+      background: rgba(34,197,94,0.35);
+      animation: wa-pulse 2.4s ease-out infinite;
+      z-index: -1;
+    }
+    @keyframes wa-pulse {
+      0%   { transform:scale(1);   opacity:0.8; }
+      70%  { transform:scale(1.12); opacity:0; }
+      100% { transform:scale(1.12); opacity:0; }
+    }
+    /* WhatsApp icon */
+    .wa-icon {
+      width: 26px;
+      height: 26px;
+      flex-shrink: 0;
+    }
+    /* Label text — hide on very small screens to just show icon */
+    .wa-label { white-space: nowrap; }
+    @media(max-width: 400px) {
+      #whatsapp-btn { padding: 13px 16px; }
+      .wa-label { display: none; }
+    }
+
+    /* Scroll-top button */
+    #scroll-top {
+      position: fixed;
+      bottom: 32px; right: 32px;
+      z-index: 400;
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue-mid), var(--blue-light));
+      color: white;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 20px var(--blue-glow);
+      cursor: pointer;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s, transform 0.3s;
+      border: none;
+    }
+    #scroll-top.visible { opacity: 1; pointer-events: all; }
+    #scroll-top:hover { transform: translateY(-3px); }
+  </style>
+</head>
+
+<body>
+
+<!-- ============================================
+     PRELOADER
+============================================= -->
+<div id="preloader">
+  <div class="preloader-logo">
+    <div class="preloader-tooth">
+      <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s-8-4.5-8-11.8A4.6 4.6 0 0 1 7.2 5.6C8.4 4.6 9.8 4 12 4c2.2 0 3.6.6 4.8 1.6A4.6 4.6 0 0 1 20 10.2C20 17.5 12 22 12 22z"/>
+      </svg>
+    </div>
+    <div class="preloader-brand">
+      Dr. Milky Derara<span>Dental Specialty Clinic</span>
+    </div>
+  </div>
+  <div style="text-align:center;display:flex;flex-direction:column;align-items:center;gap:10px;">
+    <div class="preloader-percent" id="preloader-percent">0%</div>
+    <div class="preloader-bar-wrap">
+      <div class="preloader-bar" id="preloader-bar"></div>
+    </div>
+    <p class="preloader-text" id="preloader-text">Loading assets...</p>
+  </div>
+</div>
+
+<!-- ============================================
+     TOP BAR
+============================================= -->
+<div id="topbar">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-2">
+    <div class="flex flex-wrap items-center gap-5">
+      <a href="tel:+251938329999" class="flex items-center gap-2 text-blue-200 hover:text-white transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.1-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 2 .7 2.9a2 2 0 01-.4 2.1L8 9.9a16 16 0 006 6l1.2-1.2a2 2 0 012.1-.4c.9.3 1.9.5 3 .7a2 2 0 011.7 2z"/></svg>
+        0938 329 999
+      </a>
+      <span class="flex items-center gap-2 text-blue-200">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Addis Ababa, Ethiopia
+      </span>
+      <a href="mailto:info@milkydental.com" class="flex items-center gap-2 text-blue-200 hover:text-white transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        info@milkydental.com
+      </a>
+      <span class="flex items-center gap-2 text-blue-200">
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Mon–Sat: 8:00 AM – 7:00 PM
+      </span>
+    </div>
+    <div class="hidden sm:flex items-center gap-3">
+      <!-- Social icons -->
+      <a href="#" aria-label="Facebook" class="text-blue-200 hover:text-white transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+      </a>
+      <a href="#" aria-label="Instagram" class="text-blue-200 hover:text-white transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.4A4 4 0 1112.6 8"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      </a>
+      <a href="#" aria-label="Twitter/X" class="text-blue-200 hover:text-white transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
+      <a href="#" aria-label="YouTube" class="text-blue-200 hover:text-white transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.4a2.78 2.78 0 001.95-1.97A29 29 0 0023 12a29 29 0 00-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================
+     NAVBAR
+============================================= -->
+<!-- Mobile backdrop -->
+<div id="nav-backdrop"></div>
+
+<nav id="navbar">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between gap-6">
+    <!-- Logo -->
+    <a href="#" class="flex items-center gap-3 shrink-0">
+      <div style="width:38px;height:38px;border-radius:10px;background:linear-gradient(135deg,#2563eb,#3b82f6);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s-8-4.5-8-11.8A4.6 4.6 0 0 1 7.2 5.6C8.4 4.6 9.8 4 12 4c2.2 0 3.6.6 4.8 1.6A4.6 4.6 0 0 1 20 10.2C20 17.5 12 22 12 22z"/>
+        </svg>
+      </div>
+      <div>
+        <div style="font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:#1e3a8a;line-height:1.1;">Dr. Milky Derara</div>
+        <div style="font-size:10.5px;font-weight:500;color:#6b7280;letter-spacing:.08em;text-transform:uppercase;">Dental Specialty Clinic</div>
+      </div>
+    </a>
+
+    <!-- Desktop nav links -->
+    <div class="hidden lg:flex items-center gap-8">
+      <a href="#hero"        class="nav-link">Home</a>
+      <a href="#services"   class="nav-link">Services</a>
+      <a href="#about"      class="nav-link">About</a>
+      <a href="#doctors"    class="nav-link">Doctors</a>
+      <a href="#contact"    class="nav-link">Contact</a>
+    </div>
+
+    <!-- Desktop CTAs -->
+    <div class="hidden lg:flex items-center gap-3">
+      <!-- Dark / Light mode toggle -->
+      <button id="dark-toggle" onclick="toggleDarkMode()" aria-label="Toggle dark mode" title="Switch between light and dark mode">
+        <!-- Sun — light mode -->
+        <span id="dt-sun">
+          <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1"  x2="12" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22"   x2="5.64"  y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1"  y1="12" x2="3"  y2="12"/>
+            <line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22"  y1="19.78" x2="5.64"  y2="18.36"/>
+            <line x1="18.36" y1="5.64"  x2="19.78" y2="4.22"/>
+          </svg>
+        </span>
+        <!-- Moon — dark mode -->
+        <span id="dt-moon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </span>
+      </button>
+      <a href="tel:+251938329999" class="btn-call-now">
+        <span class="call-ping"></span>
+        Call Now
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.1-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 2 .7 2.9a2 2 0 01-.4 2.1L8 9.9a16 16 0 006 6l1.2-1.2a2 2 0 012.1-.4c.9.3 1.9.5 3 .7a2 2 0 011.7 2z"/></svg>
+      </a>
+    </div>
+
+    <!-- Mobile: Call icon + Hamburger toggle -->
+    <div class="lg:hidden flex items-center gap-2">
+      <a href="tel:+251938329999" class="btn-call-now" style="padding:9px 14px;font-size:13px;gap:5px;">
+        <span class="call-ping"></span>
+        Call
+      </a>
+      <button id="hamburger" onclick="toggleMobileMenu()" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span id="ham-line-1"></span>
+        <span id="ham-line-2"></span>
+        <span id="ham-line-3"></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ============================================
+     MOBILE DRAWER MENU
+============================================= -->
+<div id="mobile-menu" role="dialog" aria-label="Navigation Menu">
+
+  <!-- Drawer header -->
+  <div class="mob-drawer-header">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <div style="width:34px;height:34px;border-radius:8px;background:linear-gradient(135deg,#2563eb,#3b82f6);display:flex;align-items:center;justify-content:center;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A4.6 4.6 0 017.2 5.6C8.4 4.6 9.8 4 12 4c2.2 0 3.6.6 4.8 1.6A4.6 4.6 0 0120 10.2C20 17.5 12 22 12 22z"/></svg>
+      </div>
+      <div>
+        <div style="font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:#1e3a8a;line-height:1.1;">Dr. Milky Derara</div>
+        <div style="font-size:9.5px;font-weight:600;color:#6b7280;letter-spacing:.08em;text-transform:uppercase;">Dental Specialty Clinic</div>
+      </div>
+    </div>
+    <button class="mob-close-btn" onclick="closeMobileMenu()" aria-label="Close menu">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+
+  <!-- Nav links -->
+  <nav class="mob-nav-links">
+    <a href="#hero" class="mob-nav-link">
+      <span class="mob-nav-link-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>
+      Home
+    </a>
+    <a href="#services" class="mob-nav-link">
+      <span class="mob-nav-link-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A4.6 4.6 0 017.2 5.6C8.4 4.6 9.8 4 12 4c2.2 0 3.6.6 4.8 1.6A4.6 4.6 0 0120 10.2C20 17.5 12 22 12 22z"/></svg></span>
+      Services
+    </a>
+    <a href="#about" class="mob-nav-link">
+      <span class="mob-nav-link-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg></span>
+      About Us
+    </a>
+    <a href="#doctors" class="mob-nav-link">
+      <span class="mob-nav-link-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></span>
+      Our Doctors
+    </a>
+    <a href="#testimonials" class="mob-nav-link">
+      <span class="mob-nav-link-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></span>
+      Testimonials
+    </a>
+    <div class="mob-nav-divider"></div>
+    <a href="#contact" class="mob-nav-link">
+      <span class="mob-nav-link-icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
+      Contact
+    </a>
+  </nav>
+
+  <!-- CTA bottom area -->
+  <div class="mob-cta-area">
+    <!-- Light / Dark mode toggle row -->
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:4px 0 8px;">
+      <span style="font-size:13.5px;font-weight:600;color:#6b7280;display:flex;align-items:center;gap:8px;" id="dtm-label">
+        <!-- label icon updates via JS -->
+        <svg id="dtm-label-icon" xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="none" stroke="#f59e0b" stroke-width="2.2" stroke-linecap="round" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        <span id="dtm-label-text">Light Mode</span>
+      </span>
+      <button id="dark-toggle-mobile" onclick="toggleDarkMode()" aria-label="Toggle dark/light mode"
+        style="position:relative;overflow:hidden;flex-shrink:0;">
+        <!-- Sun -->
+        <span id="dtm-sun">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+        </span>
+        <!-- Moon -->
+        <span id="dtm-moon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" viewBox="0 0 24 24">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </span>
+      </button>
+    </div>
+    <div class="mob-nav-divider" style="margin:0 0 8px;"></div>
+    <!-- Call Now big button -->
+    <a href="tel:+251938329999" class="btn-call-now" style="width:100%;justify-content:center;padding:14px 20px;font-size:15px;border-radius:14px;">
+      <span class="call-ping"></span>
+      Call Now — 0938 329 999
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.1-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 2 .7 2.9a2 2 0 01-.4 2.1L8 9.9a16 16 0 006 6l1.2-1.2a2 2 0 012.1-.4c.9.3 1.9.5 3 .7a2 2 0 011.7 2z"/></svg>
+    </a>
+
+    <!-- Info rows -->
+    <div class="mob-nav-divider" style="margin:4px 0;"></div>
+    <div class="mob-info-row">
+      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Addis Ababa, Ethiopia — Wollo Sefer
+    </div>
+    <div class="mob-info-row">
+      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      Mon – Sat: 8:00 AM – 7:00 PM
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================
+     HERO SECTION
+============================================= -->
+<section id="hero">
+  <!-- Background elements -->
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <div class="hero-blob hero-blob-3"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 w-full">
+    <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+
+      <!-- LEFT -->
+      <div class="flex-1 max-w-xl anim-fade-up">
+        <div class="section-label mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" style="flex-shrink:0;">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+          Top-Rated Dental Care in Addis Ababa
+        </div>
+
+        <h1 style="font-family:'Playfair Display',serif;font-size:clamp(38px,5vw,64px);font-weight:900;line-height:1.08;letter-spacing:-.02em;color:#1e3a8a;margin-bottom:20px;">
+          Your Best<br>
+          <span style="background:linear-gradient(90deg,#2563eb,#3b82f6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Dental Experience</span><br>
+          Awaits
+        </h1>
+
+        <p class="section-sub mb-8">
+          At Dr. Milky Derara Dental Specialty Clinic, we combine cutting-edge technology with compassionate, patient-centred care to deliver exceptional smiles. Your comfort, health, and confidence are our highest priorities.
+        </p>
+
+        <div class="flex flex-wrap gap-4 mb-10 anim-fade-up delay-2">
+          <a href="#services" class="btn-primary">
+            Explore Our Services
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="#" class="btn-outline">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#2563eb" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="#2563eb" stroke-width="2" fill="none"/><polygon points="10 8 16 12 10 16 10 8" fill="#2563eb"/></svg>
+            Watch Video
+          </a>
+        </div>
+
+        <!-- Trust signals -->
+        <div class="flex flex-wrap items-center gap-6 anim-fade-up delay-3">
+          <div class="flex items-center gap-2">
+            <div class="flex -space-x-2">
+              <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#bfdbfe,#93c5fd);border:2px solid white;"></div>
+              <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#93c5fd,#60a5fa);border:2px solid white;"></div>
+              <div style="width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#60a5fa,#3b82f6);border:2px solid white;"></div>
+            </div>
+            <div>
+              <div style="font-weight:700;font-size:14px;color:#1e3a8a;">5,000+</div>
+              <div style="font-size:11px;color:#6b7280;">Happy Patients</div>
+            </div>
+          </div>
+          <div style="width:1px;height:36px;background:#e5e7eb;"></div>
+          <div class="flex items-center gap-2">
+            <div style="display:flex;gap:2px;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            </div>
+            <div>
+              <div style="font-weight:700;font-size:14px;color:#1e3a8a;">4.9/5</div>
+              <div style="font-size:11px;color:#6b7280;">Average Rating</div>
+            </div>
+          </div>
+          <div style="width:1px;height:36px;background:#e5e7eb;"></div>
+          <div>
+            <div style="font-weight:700;font-size:14px;color:#1e3a8a;">15+ Years</div>
+            <div style="font-size:11px;color:#6b7280;">of Excellence</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Image -->
+      <div class="flex-1 flex justify-center items-center hero-img-wrap anim-fade-in delay-2" style="position:relative;min-height:clamp(320px,80vw,480px);padding:20px 0;">
+        <div class="hero-img-circle"></div>
+        <div class="hero-img-placeholder">
+          <img src="images/hero-doctor.webp" alt="Dr. Milky Derara" class="hero-img-real">
+        </div>
+
+        <!-- Floating badge 1 -->
+        <div class="hero-float-badge hero-float-badge-1">
+          <div style="width:38px;height:38px;border-radius:10px;background:rgba(37,99,235,.10);display:flex;align-items:center;justify-content:center;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="#2563eb" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A4.6 4.6 0 017.2 5.6C8.4 4.6 9.8 4 12 4c2.2 0 3.6.6 4.8 1.6A4.6 4.6 0 0120 10.2C20 17.5 12 22 12 22z"/></svg>
+          </div>
+          <div>
+            <div style="font-weight:700;font-size:13px;color:#1e3a8a;">Certified Specialist</div>
+            <div style="font-size:11px;color:#6b7280;">15+ Yrs Experience</div>
+          </div>
+        </div>
+
+        <!-- Floating badge 2 -->
+        <div class="hero-float-badge hero-float-badge-2">
+          <div style="width:38px;height:38px;border-radius:10px;background:rgba(16,185,129,.10);display:flex;align-items:center;justify-content:center;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="#10b981" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <div style="font-weight:700;font-size:13px;color:#1e3a8a;">5,000+ Smiles</div>
+            <div style="font-size:11px;color:#6b7280;">Transformed</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================
+     TICKER / MARQUEE
+============================================= -->
+<div class="ticker-wrap">
+  <div class="ticker-inner" id="ticker">
+    <div class="ticker-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A4.6 4.6 0 017.2 5.6C8.4 4.6 9.8 4 12 4c2.2 0 3.6.6 4.8 1.6A4.6 4.6 0 0120 10.2C20 17.5 12 22 12 22z"/></svg> General Dentistry<div class="ticker-dot"></div></div>
+    <div class="ticker-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A4.6 4.6 0 017.2 5.6C8.4 4.6 9.8 4 12 4c2.2 0 3.6.6 4.8 1.6A4.6 4.6 0 0120 10.2C20 17.5 12 22 12 22z"/></svg> Teeth Whitening<div class="ticker-dot"></div></div>
+    <div class="ticker-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A4.6 4.6 0 017.2 5.6C8.4 4.6 9.8 4 12 4c2.2 0 3.6.6 4.8 1.6A4.6 4.6 0 0120 10.2C20 17.5 12 22 12 22z"/></svg> Dental Implant<div class="ticker-dot"></div></div>
+    <div class="ticker-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A4.6 4.6 0 017.2 5.6C8.4 4.6 9.8 4 12 4c2.2 0 3.6.6 4.8 1.6A4.6 4.6 0 0120 10.2C20 17.5 12 22 12 22z"/></svg> Dental Sealant<div class="ticker-dot"></div></div>
+    <div class="ticker-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A4.6 4.6 0 017.2 5.6C8.4 4.6 9.8 4 12 4c2.2 0 3.6.6 4.8 1.6A4.6 4.6 0 0120 10.2C20 17.5 12 22 12 22z"/></svg> Orthodontics<div class="ticker-dot"></div></div>
+    <div class="ticker-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A4.6 4.6 0 017.2 5.6C8.4 4.6 9.8 4 12 4c2.2 0 3.6.6 4.8 1.6A4.6 4.6 0 0120 10.2C20 17.5 12 22 12 22z"/></svg> Root Canal<div class="ticker-dot"></div></div>
+    <!-- Duplicate for seamless loop -->
+    <div class="ticker-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A4.6 4.6 0 017.2 5.6C8.4 4.6 9.8 4 12 4c2.2 0 3.6.6 4.8 1.6A4.6 4.6 0 0120 10.2C20 17.5 12 22 12 22z"/></svg> General Dentistry<div class="ticker-dot"></div></div>
+    <div class="ticker-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A4.6 4.6 0 017.2 5.6C8.4 4.6 9.8 4 12 4c2.2 0 3.6.6 4.8 1.6A4.6 4.6 0 0120 10.2C20 17.5 12 22 12 22z"/></svg> Teeth Whitening<div class="ticker-dot"></div></div>
+    <div class="ticker-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A4.6 4.6 0 017.2 5.6C8.4 4.6 9.8 4 12 4c2.2 0 3.6.6 4.8 1.6A4.6 4.6 0 0120 10.2C20 17.5 12 22 12 22z"/></svg> Dental Implant<div class="ticker-dot"></div></div>
+    <div class="ticker-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A4.6 4.6 0 017.2 5.6C8.4 4.6 9.8 4 12 4c2.2 0 3.6.6 4.8 1.6A4.6 4.6 0 0120 10.2C20 17.5 12 22 12 22z"/></svg> Dental Sealant<div class="ticker-dot"></div></div>
+    <div class="ticker-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A4.6 4.6 0 017.2 5.6C8.4 4.6 9.8 4 12 4c2.2 0 3.6.6 4.8 1.6A4.6 4.6 0 0120 10.2C20 17.5 12 22 12 22z"/></svg> Orthodontics<div class="ticker-dot"></div></div>
+    <div class="ticker-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A4.6 4.6 0 017.2 5.6C8.4 4.6 9.8 4 12 4c2.2 0 3.6.6 4.8 1.6A4.6 4.6 0 0120 10.2C20 17.5 12 22 12 22z"/></svg> Root Canal<div class="ticker-dot"></div></div>
+  </div>
+</div>
+
+<!-- ============================================
+     ABOUT SECTION
+============================================= -->
+<section id="about" class="py-24 bg-white overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="flex flex-col lg:flex-row items-center gap-16">
+
+      <!-- LEFT: Image -->
+      <div class="flex-1 flex justify-center about-img-wrap anim-fade-in">
+        <div class="about-deco-shape about-deco-1"></div>
+        <div class="about-deco-shape about-deco-2"></div>
+        <div class="about-img">
+          <img src="images/about-clinic.webp" alt="Our Clinic" class="about-img-real">
+        </div>
+        <div class="about-badge">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#2563eb,#3b82f6);display:flex;align-items:center;justify-content:center;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><polyline points="22 11.08 22 12 12 22 2 12 2 11.08 12 2 22 11.08"/><polyline points="12 22 12 2"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+            </div>
+            <div>
+              <div style="font-weight:700;font-size:20px;color:#1e3a8a;line-height:1;">15+</div>
+              <div style="font-size:11px;color:#6b7280;">Years of Care</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Content -->
+      <div class="flex-1 max-w-lg anim-fade-up">
+        <div class="section-label">About Us</div>
+        <h2 class="section-title mb-5">
+          15 Years of Expertise<br>in <span class="accent">Dental Care</span>
+        </h2>
+        <p class="section-sub mb-8">
+          Dr. Milky Derara Dental Specialty Clinic has proudly served the Addis Ababa community with dedication and clinical precision since 2009. Our team of highly qualified specialists blends technical excellence with genuine personal attention, ensuring every patient leaves with a healthy, confident, and lasting smile.
+        </p>
+
+        <div class="flex flex-col gap-4 mb-8">
+          <div class="flex items-start gap-3">
+            <div style="width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#2563eb,#3b82f6);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" stroke="white" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <div style="font-weight:600;font-size:15px;color:#1e3a8a;">Personalised Treatment Plans You Can Trust</div>
+              <div style="font-size:13.5px;color:#6b7280;line-height:1.6;">Every care plan is individually tailored to your unique dental needs, goals, and lifestyle.</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div style="width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#2563eb,#3b82f6);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" stroke="white" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <div style="font-weight:600;font-size:15px;color:#1e3a8a;">Recognised Specialists in Advanced Dental Care</div>
+              <div style="font-size:13.5px;color:#6b7280;line-height:1.6;">Our award-winning clinicians bring world-class expertise directly to your local community.</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-3">
+            <div style="width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#2563eb,#3b82f6);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" stroke="white" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <div style="font-weight:600;font-size:15px;color:#1e3a8a;">Modern Equipment for Precise, Comfortable Treatment</div>
+              <div style="font-size:13.5px;color:#6b7280;line-height:1.6;">We invest in the latest dental technology to ensure superior outcomes with minimal discomfort.</div>
+            </div>
+          </div>
+        </div>
+
+        <a href="#contact" class="btn-primary w-fit">
+          Learn More
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     STATS BAR
+============================================= -->
+<div class="stats-bar py-8 md:py-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      <div class="anim-fade-up">
+        <div class="font-['Playfair_Display'] text-3xl md:text-4xl font-semibold text-white tracking-wide" data-counter="5000">0</div>
+        <div class="text-sm text-white/80 mt-1 font-['DM_Sans'] font-medium">Happy Patients</div>
+      </div>
+      <div class="anim-fade-up delay-1">
+        <div class="font-['Playfair_Display'] text-3xl md:text-4xl font-semibold text-white tracking-wide" data-counter="15">0</div>
+        <div class="text-sm text-white/80 mt-1 font-['DM_Sans'] font-medium">Years of Excellence</div>
+      </div>
+      <div class="anim-fade-up delay-2">
+        <div class="font-['Playfair_Display'] text-3xl md:text-4xl font-semibold text-white tracking-wide" data-counter="20">0</div>
+        <div class="text-sm text-white/80 mt-1 font-['DM_Sans'] font-medium">Expert Doctors</div>
+      </div>
+      <div class="anim-fade-up delay-3">
+        <div class="font-['Playfair_Display'] text-3xl md:text-4xl font-semibold text-white tracking-wide" data-counter="12">0</div>
+        <div class="text-sm text-white/80 mt-1 font-['DM_Sans'] font-medium">Specialties Offered</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================
+     SERVICES SECTION
+============================================= -->
+<section id="services" class="py-24" style="background:linear-gradient(180deg,#f9fafb,#ffffff);">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14">
+      <div class="anim-fade-up">
+        <div class="section-label">Our Services</div>
+        <h2 class="section-title">A Wide Range of Services<br>for <span class="accent">Your Best Smile</span></h2>
+      </div>
+      <a href="#" class="btn-primary shrink-0 w-fit anim-fade-up delay-2">Explore All Services</a>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      <!-- Service 1 -->
+      <div class="service-card anim-fade-up delay-1" style="position:relative;">
+        <div class="service-glow-border"></div>
+        <div class="service-img">
+          <img src="images/service-general.webp" alt="General Dentistry">
+          <div class="service-icon-badge">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A4.6 4.6 0 017.2 5.6C8.4 4.6 9.8 4 12 4c2.2 0 3.6.6 4.8 1.6A4.6 4.6 0 0120 10.2C20 17.5 12 22 12 22z"/></svg>
+          </div>
+        </div>
+        <div style="padding:28px 24px 24px;">
+          <h3 style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#1e3a8a;margin-bottom:8px;">General Dentistry</h3>
+          <p style="font-size:13.5px;color:#6b7280;line-height:1.65;margin-bottom:16px;">Comprehensive dental care for the whole family — cleanings, fillings, extractions and preventive care.</p>
+          <a href="#" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:#2563eb;text-decoration:none;">
+            Learn more
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Service 2 -->
+      <div class="service-card anim-fade-up delay-2" style="position:relative;">
+        <div class="service-glow-border"></div>
+        <div class="service-img">
+          <img src="images/service-whitening.webp" alt="Teeth Whitening">
+          <div class="service-icon-badge">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+          </div>
+        </div>
+        <div style="padding:28px 24px 24px;">
+          <h3 style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#1e3a8a;margin-bottom:8px;">Teeth Whitening</h3>
+          <p style="font-size:13.5px;color:#6b7280;line-height:1.65;margin-bottom:16px;">Professional-grade whitening treatments that brighten your smile safely and effectively in one visit.</p>
+          <a href="#" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:#2563eb;text-decoration:none;">
+            Learn more
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Service 3 -->
+      <div class="service-card anim-fade-up delay-3" style="position:relative;">
+        <div class="service-glow-border"></div>
+        <div class="service-img">
+          <img src="images/service-implant.webp" alt="Dental Implants">
+          <div class="service-icon-badge">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
+          </div>
+        </div>
+        <div style="padding:28px 24px 24px;">
+          <h3 style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#1e3a8a;margin-bottom:8px;">Dental Implants</h3>
+          <p style="font-size:13.5px;color:#6b7280;line-height:1.65;margin-bottom:16px;">State-of-the-art implant solutions that restore your smile with natural-looking, permanent results.</p>
+          <a href="#" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:#2563eb;text-decoration:none;">
+            Learn more
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Service 4 -->
+      <div class="service-card anim-fade-up delay-4" style="position:relative;">
+        <div class="service-glow-border"></div>
+        <div class="service-img">
+          <img src="images/service-scaling.webp" alt="Scaling & Cleaning">
+          <div class="service-icon-badge">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+        </div>
+        <div style="padding:28px 24px 24px;">
+          <h3 style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;color:#1e3a8a;margin-bottom:8px;">Scaling & Cleaning</h3>
+          <p style="font-size:13.5px;color:#6b7280;line-height:1.65;margin-bottom:16px;">Professional scaling, polishing and thorough cleaning to maintain optimal gum health and freshness.</p>
+          <a href="#" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:#2563eb;text-decoration:none;">
+            Learn more
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     DOCTORS SECTION
+============================================= -->
+<section id="doctors" class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-14 anim-fade-up">
+      <div class="section-label" style="margin:0 auto 16px;">Our Specialists</div>
+      <h2 class="section-title">Meet Our <span class="accent">Expert Doctors</span></h2>
+      <p class="section-sub" style="margin:16px auto 0;">A distinguished team of dental specialists united by a commitment to exceptional care, clinical precision, and the wellbeing of every patient.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      <!-- Doctor cards -->
+      <div class="doctor-card anim-fade-up delay-1">
+        <div class="doctor-img">
+          <img src="images/doctor-milky.webp" alt="Dr. Milky Derara">
+          <div class="doctor-social-overlay">
+            <a href="#" class="doctor-social-btn" aria-label="Facebook">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="white" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+            </a>
+            <a href="#" class="doctor-social-btn" aria-label="Instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.4A4 4 0 1112.6 8"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="#" class="doctor-social-btn" aria-label="Twitter">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="white" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div style="padding:20px;">
+          <h3 style="font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:#1e3a8a;margin-bottom:4px;">Dr. Milky Derara</h3>
+          <p style="font-size:12.5px;color:#2563eb;font-weight:500;">Chief Dental Specialist</p>
+        </div>
+      </div>
+
+      <div class="doctor-card anim-fade-up delay-2">
+        <div class="doctor-img">
+          <img src="images/doctor-2.webp" alt="Dr. Amara Tekle">
+          <div class="doctor-social-overlay">
+            <a href="#" class="doctor-social-btn"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="white" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+            <a href="#" class="doctor-social-btn"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.4A4 4 0 1112.6 8"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          </div>
+        </div>
+        <div style="padding:20px;">
+          <h3 style="font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:#1e3a8a;margin-bottom:4px;">Dr. Amara Tekle</h3>
+          <p style="font-size:12.5px;color:#2563eb;font-weight:500;">Orthodontist</p>
+        </div>
+      </div>
+
+      <div class="doctor-card anim-fade-up delay-3">
+        <div class="doctor-img">
+          <img src="images/doctor-3.webp" alt="Dr. Hana Bekele">
+          <div class="doctor-social-overlay">
+            <a href="#" class="doctor-social-btn"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="white" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+            <a href="#" class="doctor-social-btn"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.4A4 4 0 1112.6 8"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          </div>
+        </div>
+        <div style="padding:20px;">
+          <h3 style="font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:#1e3a8a;margin-bottom:4px;">Dr. Hana Bekele</h3>
+          <p style="font-size:12.5px;color:#2563eb;font-weight:500;">Implantologist</p>
+        </div>
+      </div>
+
+      <div class="doctor-card anim-fade-up delay-4">
+        <div class="doctor-img">
+          <img src="images/doctor-4.webp" alt="Dr. Biruk Haile">
+          <div class="doctor-social-overlay">
+            <a href="#" class="doctor-social-btn"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="white" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+            <a href="#" class="doctor-social-btn"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.4A4 4 0 1112.6 8"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          </div>
+        </div>
+        <div style="padding:20px;">
+          <h3 style="font-family:'Playfair Display',serif;font-size:17px;font-weight:700;color:#1e3a8a;margin-bottom:4px;">Dr. Biruk Haile</h3>
+          <p style="font-size:12.5px;color:#2563eb;font-weight:500;">Pedodontist</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     TESTIMONIALS
+============================================= -->
+<style>
+  /* Equal-height testimonial grid */
+  .tgrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: stretch;
+  }
+  @media(max-width:1023px){ .tgrid { grid-template-columns: repeat(2,1fr); } }
+  @media(max-width:639px)  { .tgrid { grid-template-columns: 1fr; } }
+
+  .tcard {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 8px 40px rgba(29,78,216,.09);
+    border: 1px solid rgba(37,99,235,.07);
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s;
+  }
+  .tcard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 60px rgba(29,78,216,.14);
+    border-color: rgba(37,99,235,.16);
+  }
+  .tcard-quote {
+    font-size: 14.5px;
+    color: #4b5563;
+    line-height: 1.75;
+    flex: 1;
+    margin-bottom: 20px;
+  }
+  .tcard-footer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 18px;
+    border-top: 1px solid #f3f4f6;
+    margin-top: auto;
+  }
+  .tcard-avatar {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid white;
+    box-shadow: 0 2px 8px rgba(0,0,0,.10);
+    display: block;
+    flex-shrink: 0;
+  }
+  .tcard-avatar-fallback {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 16px; color: #2563eb;
+    flex-shrink: 0;
+  }
+  .five-stars { display:flex; gap:3px; margin-bottom:14px; }
+</style>
+
+<section id="testimonials" style="padding:96px 0;background:linear-gradient(180deg,#eff6ff,#ffffff);">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-14 anim-fade-up">
+      <div class="section-label" style="margin:0 auto 16px;">Testimonials</div>
+      <h2 class="section-title">What Our <span class="accent">Patients Say</span></h2>
+      <p class="section-sub" style="margin:16px auto 0;">Genuine experiences shared by patients who entrust us with their dental health and smile.</p>
+    </div>
+
+    <!-- EQUAL-HEIGHT STATIC GRID — no arrows, no dots -->
+    <div class="tgrid">
+
+      <!-- 1 -->
+      <div class="tcard anim-fade-up delay-1">
+        <div class="five-stars">
+          <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="tcard-quote">"Outstanding service and truly professional care. Every member of the team was warm and welcoming — I had an exceptional dental experience and will absolutely be returning."</p>
+        <div class="tcard-footer">
+          <img src="images/user-1.webp" alt="Gazahagn Tafa" class="tcard-avatar" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="tcard-avatar-fallback" style="display:none;background:linear-gradient(135deg,#dbeafe,#93c5fd);">G</div>
+          <div><div style="font-weight:700;font-size:14px;color:#1e3a8a;">Gazahagn Tafa</div><div style="font-size:11.5px;color:#9ca3af;">Verified Patient</div></div>
+        </div>
+      </div>
+
+      <!-- 2 -->
+      <div class="tcard anim-fade-up delay-2">
+        <div class="five-stars">
+          <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="tcard-quote">"Immaculate facility and a highly professional team. The doctors are clearly very skilled, and the environment is calm and reassuring from the moment you walk in."</p>
+        <div class="tcard-footer">
+          <img src="images/user-2.webp" alt="Endalkachew Herouy" class="tcard-avatar" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="tcard-avatar-fallback" style="display:none;background:linear-gradient(135deg,#dbeafe,#60a5fa);">E</div>
+          <div><div style="font-weight:700;font-size:14px;color:#1e3a8a;">Endalkachew Herouy</div><div style="font-size:11.5px;color:#9ca3af;">Verified Patient</div></div>
+        </div>
+      </div>
+
+      <!-- 3 -->
+      <div class="tcard anim-fade-up delay-3">
+        <div class="five-stars">
+          <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="tcard-quote">"Excellent service and first-class hospitality. I felt genuinely cared for throughout my visit. I would highly recommend this clinic to anyone seeking quality dental care."</p>
+        <div class="tcard-footer">
+          <img src="images/user-3.webp" alt="Scat Machol" class="tcard-avatar" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="tcard-avatar-fallback" style="display:none;background:linear-gradient(135deg,#dbeafe,#bfdbfe);">S</div>
+          <div><div style="font-weight:700;font-size:14px;color:#1e3a8a;">Scat Machol</div><div style="font-size:11.5px;color:#9ca3af;">Verified Patient</div></div>
+        </div>
+      </div>
+
+      <!-- 4 -->
+      <div class="tcard anim-fade-up delay-1">
+        <div class="five-stars">
+          <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="tcard-quote">"An outstanding experience from start to finish. The staff made me feel at ease immediately. The treatment was thorough and completely pain-free. I have already recommended the clinic to my entire family."</p>
+        <div class="tcard-footer">
+          <img src="images/user-4.webp" alt="Mulu Wordofa" class="tcard-avatar" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="tcard-avatar-fallback" style="display:none;background:linear-gradient(135deg,#bfdbfe,#93c5fd);">M</div>
+          <div><div style="font-weight:700;font-size:14px;color:#1e3a8a;">Mulu Wordofa</div><div style="font-size:11.5px;color:#9ca3af;">Verified Patient</div></div>
+        </div>
+      </div>
+
+      <!-- 5 -->
+      <div class="tcard anim-fade-up delay-2">
+        <div class="five-stars">
+          <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="tcard-quote">"I visited for a professional teeth cleaning and was very impressed. The procedure was thorough and pain-free, and the team took time to explain each step in detail. Excellent care."</p>
+        <div class="tcard-footer">
+          <img src="images/user-5.webp" alt="Faji T. Daba" class="tcard-avatar" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="tcard-avatar-fallback" style="display:none;background:linear-gradient(135deg,#dbeafe,#bfdbfe);">F</div>
+          <div><div style="font-weight:700;font-size:14px;color:#1e3a8a;">Faji T. Daba</div><div style="font-size:11.5px;color:#9ca3af;">Verified Patient</div></div>
+        </div>
+      </div>
+
+      <!-- 6 -->
+      <div class="tcard anim-fade-up delay-3">
+        <div class="five-stars">
+          <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="tcard-quote">"Exceptional staff and doctors — patient, approachable, and highly professional throughout. The clinic is spotlessly maintained. A genuinely outstanding experience from start to finish."</p>
+        <div class="tcard-footer">
+          <img src="images/user-6.webp" alt="Maci Gamer" class="tcard-avatar" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="tcard-avatar-fallback" style="display:none;background:linear-gradient(135deg,#dbeafe,#93c5fd);">M</div>
+          <div><div style="font-weight:700;font-size:14px;color:#1e3a8a;">Maci Gamer</div><div style="font-size:11.5px;color:#9ca3af;">Verified Patient</div></div>
+        </div>
+      </div>
+
+      <!-- 7 -->
+      <div class="tcard anim-fade-up delay-1">
+        <div class="five-stars">
+          <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="tcard-quote">"I underwent extraction, scaling, and polishing in a single visit. The procedure was carried out with great professionalism and care. The doctor was meticulous and explained every step. Highly recommended."</p>
+        <div class="tcard-footer">
+          <img src="images/user-7.webp" alt="Simegn Endeshaw" class="tcard-avatar" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="tcard-avatar-fallback" style="display:none;background:linear-gradient(135deg,#bfdbfe,#dbeafe);">S</div>
+          <div><div style="font-weight:700;font-size:14px;color:#1e3a8a;">Simegn Endeshaw</div><div style="font-size:11.5px;color:#9ca3af;">Verified Patient</div></div>
+        </div>
+      </div>
+
+      <!-- 8 -->
+      <div class="tcard anim-fade-up delay-2">
+        <div class="five-stars">
+          <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="tcard-quote">"A wonderful experience with attentive, caring staff. The facility is modern, hygienic, and well-equipped. I have complete confidence in the clinical team and will continue to attend."</p>
+        <div class="tcard-footer">
+          <img src="images/user-8.webp" alt="Meketaw Lemma" class="tcard-avatar" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="tcard-avatar-fallback" style="display:none;background:linear-gradient(135deg,#93c5fd,#60a5fa);">M</div>
+          <div><div style="font-weight:700;font-size:14px;color:#1e3a8a;">Meketaw Lemma</div><div style="font-size:11.5px;color:#9ca3af;">Verified Patient</div></div>
+        </div>
+      </div>
+
+      <!-- 9 -->
+      <div class="tcard anim-fade-up delay-3">
+        <div class="five-stars">
+          <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p class="tcard-quote">"An exceptional clinic — impeccably clean, hygienic, and modern. The doctors and nursing staff are genuinely kind and helpful. Without question, the finest dental clinic I have visited in Addis Ababa."</p>
+        <div class="tcard-footer">
+          <img src="images/user-9.webp" alt="Amenti Ck" class="tcard-avatar" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <div class="tcard-avatar-fallback" style="display:none;background:linear-gradient(135deg,#dbeafe,#93c5fd);">A</div>
+          <div><div style="font-weight:700;font-size:14px;color:#1e3a8a;">Amenti Ck</div><div style="font-size:11.5px;color:#9ca3af;">Verified Patient</div></div>
+        </div>
+      </div>
+
+    </div><!-- end .tgrid -->
+  </div>
+</section>
+
+<!-- ============================================
+     CONTACT SECTION
+============================================= -->
+<section id="contact" class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-14 anim-fade-up">
+      <div class="section-label" style="margin:0 auto 16px;">Get In Touch</div>
+      <h2 class="section-title">Reach <span class="accent">Us</span></h2>
+      <p class="section-sub" style="margin:16px auto 0;">Our team is ready to assist you. Reach out to schedule a consultation or ask any questions about your dental care.</p>
+    </div>
+
+    <div class="flex flex-col lg:flex-row gap-12">
+
+      <!-- LEFT: Contact info -->
+      <div class="flex-1 flex flex-col gap-5 anim-fade-up">
+        <div class="contact-info-card">
+          <div class="contact-info-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div style="font-weight:600;font-size:14px;color:#1e3a8a;margin-bottom:3px;">Our Location</div>
+            <div style="font-size:13.5px;color:#6b7280;line-height:1.6;">Addis Ababa, Ethiopia<br>Bole Sub-City, Woreda 03</div>
+          </div>
+        </div>
+        <div class="contact-info-card">
+          <div class="contact-info-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.1-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 2 .7 2.9a2 2 0 01-.4 2.1L8 9.9a16 16 0 006 6l1.2-1.2a2 2 0 012.1-.4c.9.3 1.9.5 3 .7a2 2 0 011.7 2z"/></svg>
+          </div>
+          <div>
+            <div style="font-weight:600;font-size:14px;color:#1e3a8a;margin-bottom:3px;">Phone Number</div>
+            <div style="font-size:13.5px;color:#6b7280;">0938 329 999</div>
+          </div>
+        </div>
+        <div class="contact-info-card">
+          <div class="contact-info-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <div style="font-weight:600;font-size:14px;color:#1e3a8a;margin-bottom:3px;">Email Address</div>
+            <div style="font-size:13.5px;color:#6b7280;">info@milkydental.com<br>appointments@milkydental.com</div>
+          </div>
+        </div>
+        <div class="contact-info-card">
+          <div class="contact-info-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+            <div style="font-weight:600;font-size:14px;color:#1e3a8a;margin-bottom:3px;">Working Hours</div>
+            <div style="font-size:13.5px;color:#6b7280;">Monday – Saturday: 8:00 AM – 7:00 PM<br>Sunday: 9:00 AM – 2:00 PM</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Form -->
+      <div class="flex-1 anim-fade-up delay-2">
+        <div style="background:linear-gradient(145deg,#eff6ff,#ffffff);border-radius:24px;padding:40px;border:1px solid rgba(37,99,235,.08);box-shadow:0 8px 40px rgba(37,99,235,.08);">
+          <h3 style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:#1e3a8a;margin-bottom:24px;">Send Us a Message</h3>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div>
+              <label style="display:block;font-size:13px;font-weight:600;color:#374151;margin-bottom:6px;">Full Name</label>
+              <input class="contact-input" type="text" placeholder="Full Name" />
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:600;color:#374151;margin-bottom:6px;">Email Address</label>
+              <input class="contact-input" type="email" placeholder="Email Address" />
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:600;color:#374151;margin-bottom:6px;">Phone Number</label>
+              <input class="contact-input" type="tel" placeholder="+251 9XX XXX XXX" />
+            </div>
+            <div>
+              <label style="display:block;font-size:13px;font-weight:600;color:#374151;margin-bottom:6px;">Message</label>
+              <textarea class="contact-input" rows="5" placeholder="How can we assist you? Please describe your enquiry..." style="resize:vertical;"></textarea>
+            </div>
+            <button class="btn-primary" style="justify-content:center;padding:14px 24px;font-size:15px;">
+              Send Message
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================
+     GOOGLE MAPS SECTION
+============================================= -->
+<section id="map-section" style="background:#f0f6ff;padding:0;">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14">
+    <div class="anim-fade-up" style="text-align:center;margin-bottom:28px;">
+      <div class="section-label" style="margin:0 auto 12px;">Find Us</div>
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(26px,3.5vw,38px);font-weight:700;color:#1e3a8a;margin-bottom:8px;">
+        Visit Our <span style="color:#2563eb;">Clinic</span>
+      </h2>
+      <p style="font-size:15px;color:#6b7280;">Addis Ababa, Ethiopia — Bole Sub-City, Woreda 03</p>
+    </div>
+
+    <!-- MAP CONTAINER — paste your Google Maps embed src into the iframe below -->
+    <div style="position:relative;border-radius:20px;overflow:hidden;box-shadow:0 16px 60px rgba(29,78,216,.14);border:1px solid rgba(37,99,235,.10);">
+
+      <iframe
+        id="clinic-map"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1443.426541998921!2d38.76634025463082!3d8.985535166768916!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b8569e31e3da7%3A0xaaa5ea4aa68be689!2sDr%20Milky%20Derara%20Speciality%20Dental%20Clinic!5e0!3m2!1sen!2set!4v1776511658141!5m2!1sen!2set"
+        width="100%"
+        height="420"
+        style="display:block;border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Dr. Milky Derara Dental Specialty Clinic Location">
+      </iframe>
+
+      <!-- Overlay badge on the map -->
+      <div class="map-badge-overlay" style="position:absolute;top:16px;left:16px;background:white;border-radius:12px;padding:12px 16px;box-shadow:0 6px 24px rgba(29,78,216,.16);display:flex;align-items:center;gap:10px;z-index:10;">
+        <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#2563eb,#3b82f6);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="white" stroke-width="2.2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div>
+          <div style="font-weight:700;font-size:13px;color:#1e3a8a;line-height:1.2;">Dr. Milky Derara Dental Clinic</div>
+          <div style="font-size:11.5px;color:#6b7280;">Addis Ababa, Ethiopia</div>
+        </div>
+      </div>
+
+      <!-- Get Directions button -->
+      <a href="https://www.google.com/maps/dir/?api=1&destination=Addis+Ababa+Ethiopia+Bole+Dental+Clinic" target="_blank" rel="noopener"
+        style="position:absolute;bottom:16px;right:16px;background:linear-gradient(135deg,#2563eb,#3b82f6);color:white;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;padding:10px 18px;border-radius:50px;text-decoration:none;display:flex;align-items:center;gap:7px;box-shadow:0 6px 20px rgba(37,99,235,.35);z-index:10;transition:all .25s;" onmouseenter="this.style.transform='translateY(-2px)'" onmouseleave="this.style.transform='translateY(0)'">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" stroke="white" stroke-width="2.2" viewBox="0 0 24 24"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+        Get Directions
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================
+     FOOTER
+============================================= -->
+<footer style="background:linear-gradient(160deg,#0f172a,#1e3a8a);padding:72px 0 0;">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 pb-12">
+
+      <!-- Brand -->
+      <div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+          <div style="width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,#2563eb,#60a5fa);display:flex;align-items:center;justify-content:center;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 22s-8-4.5-8-11.8A4.6 4.6 0 017.2 5.6C8.4 4.6 9.8 4 12 4c2.2 0 3.6.6 4.8 1.6A4.6 4.6 0 0120 10.2C20 17.5 12 22 12 22z"/></svg>
+          </div>
+          <div>
+            <div style="font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:white;">Dr. Milky Derara</div>
+            <div style="font-size:10px;color:rgba(255,255,255,.5);letter-spacing:.1em;text-transform:uppercase;">Dental Specialty Clinic</div>
+          </div>
+        </div>
+        <p style="font-size:13.5px;color:rgba(255,255,255,.55);line-height:1.75;margin-bottom:20px;">Providing premium dental care with compassion, clinical precision, and an unwavering commitment to your long-term smile.</p>
+        <div style="display:flex;gap:12px;">
+          <a href="#" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.1);transition:all .2s;" onmouseenter="this.style.background='rgba(255,255,255,.2)';this.style.color='white'" onmouseleave="this.style.background='rgba(255,255,255,.08)';this.style.color='rgba(255,255,255,.6)'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="#" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.1);transition:all .2s;" onmouseenter="this.style.background='rgba(255,255,255,.2)';this.style.color='white'" onmouseleave="this.style.background='rgba(255,255,255,.08)';this.style.color='rgba(255,255,255,.6)'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.4A4 4 0 1112.6 8"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="#" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.1);transition:all .2s;" onmouseenter="this.style.background='rgba(255,255,255,.2)';this.style.color='white'" onmouseleave="this.style.background='rgba(255,255,255,.08)';this.style.color='rgba(255,255,255,.6)'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.4a2.78 2.78 0 001.95-1.97A29 29 0 0023 12a29 29 0 00-.46-5.58zM9.75 15.02V8.98L15.5 12l-5.75 3.02z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h4 style="font-size:14px;font-weight:600;color:white;margin-bottom:16px;letter-spacing:.04em;text-transform:uppercase;">Quick Links</h4>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;">
+          <li><a href="#hero" class="footer-link" style="font-size:13.5px;color:rgba(255,255,255,.55);text-decoration:none;transition:color .2s;">Home</a></li>
+          <li><a href="#about" class="footer-link" style="font-size:13.5px;color:rgba(255,255,255,.55);text-decoration:none;transition:color .2s;">About Us</a></li>
+          <li><a href="#doctors" class="footer-link" style="font-size:13.5px;color:rgba(255,255,255,.55);text-decoration:none;transition:color .2s;">Our Doctors</a></li>
+          <li><a href="#testimonials" class="footer-link" style="font-size:13.5px;color:rgba(255,255,255,.55);text-decoration:none;transition:color .2s;">Testimonials</a></li>
+          <li><a href="#contact" class="footer-link" style="font-size:13.5px;color:rgba(255,255,255,.55);text-decoration:none;transition:color .2s;">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <h4 style="font-size:14px;font-weight:600;color:white;margin-bottom:16px;letter-spacing:.04em;text-transform:uppercase;">Services</h4>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;">
+          <li><a href="#" class="footer-link" style="font-size:13.5px;color:rgba(255,255,255,.55);text-decoration:none;transition:color .2s;">General Dentistry</a></li>
+          <li><a href="#" class="footer-link" style="font-size:13.5px;color:rgba(255,255,255,.55);text-decoration:none;transition:color .2s;">Teeth Whitening</a></li>
+          <li><a href="#" class="footer-link" style="font-size:13.5px;color:rgba(255,255,255,.55);text-decoration:none;transition:color .2s;">Dental Implants</a></li>
+          <li><a href="#" class="footer-link" style="font-size:13.5px;color:rgba(255,255,255,.55);text-decoration:none;transition:color .2s;">Orthodontics</a></li>
+          <li><a href="#" class="footer-link" style="font-size:13.5px;color:rgba(255,255,255,.55);text-decoration:none;transition:color .2s;">Root Canal</a></li>
+          <li><a href="#" class="footer-link" style="font-size:13.5px;color:rgba(255,255,255,.55);text-decoration:none;transition:color .2s;">Scaling & Polishing</a></li>
+        </ul>
+      </div>
+
+      <!-- Newsletter -->
+      <div>
+        <h4 style="font-size:14px;font-weight:600;color:white;margin-bottom:16px;letter-spacing:.04em;text-transform:uppercase;">Newsletter</h4>
+        <p style="font-size:13px;color:rgba(255,255,255,.5);line-height:1.7;margin-bottom:16px;">Stay informed with expert dental tips, clinic news, and exclusive offers — delivered directly to your inbox.</p>
+        <div style="display:flex;gap:8px;">
+          <input type="email" placeholder="Your email address" style="flex:1;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:11px 14px;font-size:13px;color:white;outline:none;font-family:'DM Sans',sans-serif;" />
+          <button class="btn-primary" style="padding:11px 16px;border-radius:10px;white-space:nowrap;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom bar -->
+    <div style="border-top:1px solid rgba(255,255,255,.08);padding:20px 0;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;">
+      <p style="font-size:12.5px;color:rgba(255,255,255,.35);">© 2025 Dr. Milky Derara Dental Specialty Clinic. All rights reserved.</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:20px;">
+        <a href="#" style="font-size:12px;color:rgba(255,255,255,.35);text-decoration:none;" onmouseenter="this.style.color='white'" onmouseleave="this.style.color='rgba(255,255,255,.35)'">Privacy Policy</a>
+        <a href="#" style="font-size:12px;color:rgba(255,255,255,.35);text-decoration:none;" onmouseenter="this.style.color='white'" onmouseleave="this.style.color='rgba(255,255,255,.35)'">Terms of Service</a>
+        <span style="width:1px;height:14px;background:rgba(255,255,255,.12);display:inline-block;"></span>
+        <a href="tel:+251911463365"
+          style="font-size:12px;color:rgba(255,255,255,.45);text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:color .2s;"
+          onmouseenter="this.style.color='#93c5fd'" onmouseleave="this.style.color='rgba(255,255,255,.45)'">
+          <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.1-8.7A2 2 0 014.1 2h3a2 2 0 012 1.7c.1 1 .4 2 .7 2.9a2 2 0 01-.4 2.1L8 9.9a16 16 0 006 6l1.2-1.2a2 2 0 012.1-.4c.9.3 1.9.5 3 .7a2 2 0 011.7 2z"/></svg>
+          <span>Developer: 0911 463 365</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================
+     WHATSAPP FLOATING BUTTON
+============================================= -->
+<a id="whatsapp-btn"
+   href="https://wa.me/251938329999?text=Hello%20Dr.%20Milky%20Derara%20Dental%20Clinic%2C%20I%20would%20like%20to%20book%20an%20appointment%20for%20a%20dental%20treatment.%20Please%20let%20me%20know%20your%20available%20times.%20Thank%20you!%20%F0%9F%98%8A"
+   target="_blank"
+   rel="noopener noreferrer"
+   aria-label="Book appointment via WhatsApp">
+
+  <!-- WhatsApp SVG logo -->
+  <svg class="wa-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+    <path fill="white" d="M16 0C7.164 0 0 7.163 0 16c0 2.824.738 5.476 2.027 7.782L0 32l8.418-2.004A15.938 15.938 0 0016 32c8.836 0 16-7.163 16-16S24.836 0 16 0zm0 29.333a13.27 13.27 0 01-6.773-1.856l-.486-.289-5.002 1.192 1.215-4.864-.317-.498A13.27 13.27 0 012.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.27-9.928c-.398-.199-2.355-1.162-2.72-1.294-.365-.133-.631-.199-.897.199-.265.398-1.029 1.294-1.261 1.56-.232.265-.465.298-.863.1-.398-.2-1.681-.62-3.202-1.977-1.183-1.056-1.982-2.36-2.214-2.758-.232-.398-.025-.614.174-.812.179-.178.398-.465.597-.697.199-.233.265-.4.398-.665.133-.266.066-.498-.033-.697-.1-.2-.897-2.162-1.229-2.96-.323-.778-.651-.673-.897-.685l-.764-.013c-.266 0-.697.1-1.062.498-.365.398-1.395 1.362-1.395 3.323s1.428 3.855 1.627 4.12c.2.265 2.811 4.29 6.811 6.02.952.412 1.695.658 2.274.842.956.305 1.826.262 2.514.159.767-.114 2.355-.963 2.688-1.894.332-.931.332-1.729.232-1.894-.1-.166-.365-.265-.763-.464z"/>
+  </svg>
+
+  <span class="wa-label">Book Appointment Now</span>
+</a>
+
+<!-- Scroll to top -->
+<button id="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">
+  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<!-- Pulse dot keyframe -->
+<style>
+@keyframes pulse-dot {
+  0%,100%{opacity:1;transform:scale(1)}
+  50%{opacity:.6;transform:scale(1.4)}
+}
+</style>
+
+<!-- ============================================
+     JAVASCRIPT
+============================================= -->
+<script>
+  // =============================================
+  // DARK MODE  — light is always the default
+  // =============================================
+  const html = document.documentElement;
+
+  function syncDarkUI(isDark) {
+    // Mobile label text + icon colour
+    const labelText = document.getElementById('dtm-label-text');
+    const labelIcon = document.getElementById('dtm-label-icon');
+    if (labelText) labelText.textContent = isDark ? 'Dark Mode' : 'Light Mode';
+    if (labelIcon) {
+      labelIcon.style.stroke = isDark ? '#93c5fd' : '#f59e0b';
+    }
+    // Mobile drawer label text colour
+    const label = document.getElementById('dtm-label');
+    if (label) label.style.color = isDark ? '#94a3b8' : '#6b7280';
+  }
+
+  function toggleDarkMode() {
+    const isDark = html.classList.toggle('dark');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    syncDarkUI(isDark);
+  }
+
+  // On page load — ONLY restore if user explicitly chose dark via the button.
+  // Never auto-apply dark from OS preference — light is always the default.
+  (function() {
+    const saved  = localStorage.getItem('theme');
+    const isDark = saved === 'dark';   // light unless user explicitly chose dark
+    if (isDark) {
+      html.classList.add('dark');
+      syncDarkUI(true);
+    }
+  })();
+
+  // =====================
+  // PRELOADER — smooth rAF
+  // =====================
+  const bar            = document.getElementById('preloader-bar');
+  const preloaderText  = document.getElementById('preloader-text');
+  const preloaderPct   = document.getElementById('preloader-percent');
+  const preloader      = document.getElementById('preloader');
+
+  // Give bar a smooth CSS transition so every width change glides
+  bar.style.transition = 'width 0.45s cubic-bezier(0.4, 0, 0.2, 1)';
+
+  const stages = [
+    { target: 30,  label: 'Loading assets...' },
+    { target: 60,  label: 'Setting up your experience...' },
+    { target: 85,  label: 'Almost ready...' },
+    { target: 100, label: 'Welcome! ✨' },
+  ];
+
+  let stageIdx  = 0;
+  let current   = 0;
+  let lastTime  = null;
+
+  function runPreloader(ts) {
+    if (!lastTime) lastTime = ts;
+    const elapsed = ts - lastTime;
+    lastTime = ts;
+
+    const stage  = stages[stageIdx];
+    // Speed in %/ms — slower at start, faster toward end
+    const speed  = stageIdx < 2 ? 0.025 : 0.045;
+    current      = Math.min(current + speed * elapsed, stage.target);
+
+    bar.style.width          = current + '%';
+    preloaderPct.textContent = Math.floor(current) + '%';
+    preloaderText.textContent = stage.label;
+
+    if (current >= stage.target) {
+      stageIdx++;
+      if (stageIdx >= stages.length) {
+        // Hold at 100% for a beat then fade out
+        bar.style.width = '100%';
+        preloaderPct.textContent = '100%';
+        setTimeout(() => preloader.classList.add('hidden'), 600);
+        return; // stop rAF loop
+      }
+    }
+
+    requestAnimationFrame(runPreloader);
+  }
+
+  requestAnimationFrame(runPreloader);
+
+  // =====================
+  // NAVBAR SCROLL
+  // =====================
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+    document.getElementById('scroll-top').classList.toggle('visible', window.scrollY > 300);
+  }, { passive: true });
+
+  // =============================================
+  // MOBILE DRAWER — TOGGLE / OPEN / CLOSE
+  // =============================================
+  const mobileMenu   = document.getElementById('mobile-menu');
+  const navBackdrop  = document.getElementById('nav-backdrop');
+  const hamburger    = document.getElementById('hamburger');
+  let menuIsOpen     = false;
+
+  function toggleMobileMenu() {
+    menuIsOpen ? closeMobileMenu() : openMobileMenu();
+  }
+
+  function openMobileMenu() {
+    menuIsOpen = true;
+    mobileMenu.classList.add('open');
+    navBackdrop.classList.add('open');
+    hamburger.classList.add('is-open');
+    hamburger.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+    // Hide navbar + topbar (slide up and sink below drawer)
+    const nav = document.getElementById('navbar');
+    const tb  = document.getElementById('topbar');
+    if (nav) { nav.classList.add('drawer-open'); nav.style.zIndex = '1'; }
+    if (tb)  { tb.classList.add('drawer-open');  tb.style.transform = 'translateY(-100%)'; tb.style.opacity = '0'; }
+  }
+
+  function closeMobileMenu() {
+    menuIsOpen = false;
+    mobileMenu.classList.remove('open');
+    navBackdrop.classList.remove('open');
+    hamburger.classList.remove('is-open');
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    // Restore navbar + topbar
+    const nav = document.getElementById('navbar');
+    const tb  = document.getElementById('topbar');
+    if (nav) { nav.classList.remove('drawer-open'); nav.style.zIndex = ''; }
+    if (tb)  { tb.classList.remove('drawer-open'); tb.style.transform = ''; tb.style.opacity = ''; }
+  }
+
+  // Close on backdrop click
+  navBackdrop.addEventListener('click', closeMobileMenu);
+
+  // Close on Escape key
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && menuIsOpen) closeMobileMenu();
+  });
+
+  // Close when a nav link is tapped (smooth scroll takes over)
+  mobileMenu.querySelectorAll('.mob-nav-link').forEach(link => {
+    link.addEventListener('click', closeMobileMenu);
+  });
+
+  // =====================
+  // SCROLL ANIMATIONS
+  // =====================
+  const animObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        animObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.anim-fade-up, .anim-fade-in').forEach(el => animObserver.observe(el));
+
+  // =====================
+  // COUNTER ANIMATION
+  // =====================
+  function animateCounter(el) {
+    const target = parseInt(el.dataset.counter, 10);
+    const suffix = target >= 1000 ? '+' : (target >= 10 ? '+' : '+');
+    const duration = 1800;
+    const step = target / (duration / 16);
+    let current = 0;
+    const timer = setInterval(() => {
+      current += step;
+      if (current >= target) { current = target; clearInterval(timer); }
+      el.textContent = Math.floor(current).toLocaleString() + suffix;
+    }, 16);
+  }
+
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        animateCounter(e.target);
+        counterObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('[data-counter]').forEach(el => counterObserver.observe(el));
+
+  // =====================
+  // RIPPLE ON BUTTONS
+  // =====================
+  document.querySelectorAll('.btn-primary').forEach(btn => {
+    btn.addEventListener('click', e => {
+      const rect = btn.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      const ripple = document.createElement('span');
+      ripple.className = 'ripple-el';
+      ripple.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX-rect.left-size/2}px;top:${e.clientY-rect.top-size/2}px;`;
+      btn.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 700);
+    });
+  });
+
+</script>
+</body>
+</html>
